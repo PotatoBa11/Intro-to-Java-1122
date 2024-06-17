@@ -58,6 +58,7 @@ public class DodgerGame extends JFrame implements MouseMotionListener {
         timer.start();
         setVisible(true);
     }
+
     private void update() {
         if(hp <= 0) {
             JOptionPane.showMessageDialog(this, "Game Over!");
@@ -87,6 +88,18 @@ public class DodgerGame extends JFrame implements MouseMotionListener {
         hp_lbl.setText("HP: " + hp);
     }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.setColor(Color.DARK_GRAY);
+        g.fillOval((int)circle.getX(), (int)circle.getY(), 
+            (int)circle.getWidth(), (int)circle.getHeight());
+
+        g.setColor(Color.CYAN);
+        for(Rectangle sq: squares) {
+            g.fillRect(sq.x, sq.y, SQ_SIZE, SQ_SIZE);
+        }
+    }
 
     public static void main(String[] args) {
         new DodgerGame();
