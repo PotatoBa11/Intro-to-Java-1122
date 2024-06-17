@@ -25,6 +25,18 @@ public class DrawingShapes extends Frame {
         setVisible(true);
 
         shape = Shapes.LINE;
+        addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                startX = e.getX();
+                startY = e.getY();
+            }    
+            public void mouseReleased(MouseEvent e) {
+                endX = e.getX();
+                endY = e.getY();
+                drawShape();
+            }
+        });
+
 
         // enable focus traversal keys
         setFocusTraversalKeysEnabled(true);
