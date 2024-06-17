@@ -24,7 +24,7 @@ To run the program:
 
 ### Instructions for Use
 - Drawing a Shape:
-    -  Press the left mouse button at the starting point of the shape.
+    - Press the left mouse button at the starting point of the shape.
     - Drag the mouse to define the size and orientation of the shape.
     - Release the mouse button to finalize the shape.
 
