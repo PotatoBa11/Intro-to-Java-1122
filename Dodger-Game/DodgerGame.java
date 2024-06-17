@@ -101,6 +101,14 @@ public class DodgerGame extends JFrame implements MouseMotionListener {
         }
     }
 
+    @Override
+    public void mouseDragged(MouseEvent e) {;}
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        circle.x = e.getX() - CIR_DIAM / 2;
+        repaint();
+    }
+
     public static void main(String[] args) {
         new DodgerGame();
     }
