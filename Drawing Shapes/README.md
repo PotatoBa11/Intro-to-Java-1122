@@ -6,7 +6,7 @@ This Java program allows user to draw shapes (a) square, (b) line, and (c) octag
 ### Interactive Drawing Process
 Upon launching the program, the user can choose from three shapes:
 
-- Square: Click and drag to define the square's diagonal. Release the mouse button to draw the square.
+- Square: Click and drag to draw the circumscribed rectangle of the square. Release the mouse button to draw the square.
 - Line: Click and drag to draw a straight line from the starting point to the current mouse position. Release the mouse button to finalize the line.
 - Octagon: Click and drag to draw the circumscribed rectangle of the octagon. Release the mouse button to complete the octagon.
 
