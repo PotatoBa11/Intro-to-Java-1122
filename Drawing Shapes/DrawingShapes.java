@@ -64,6 +64,35 @@ public class DrawingShapes extends Frame {
         });
     }
 
+    private void drawShape() {
+        Graphics g = getGraphics();
+        
+        switch (shape) {
+            case Shapes.LINE:
+                g.drawLine(startX, startY, endX, endY);
+                break;
+            case Shapes.SQUARE:
+                int size = endX-startX < endY-startY?
+                    endX-startX : endY-startY;
+                g.drawRect(startX, startY, size, size);
+                break;
+            case Shapes.OCTAGON:
+                int centX = (startX + endX)/2;
+                int centY = (startY + endY)/2;
+                int radius = Math.abs(endX - startX)/2;
+                
+                int[] xPoints = new int[SIDES_OF_OCT];
+                int[] yPoints = new int[SIDES_OF_OCT];
+
+                for(int i=0; i < SIDES_OF_OCT; ++i) {
+                    double angle = 2*Math.PI/SIDES_OF_OCT * i;
+                    xPoints[i] = (int)(centX + radius*Math.cos(angle));
+                    yPoints[i] = (int)(centY + radius*Math.sin(angle));
+                }
+                g.drawPolygon(xPoints, yPoints, SIDES_OF_OCT);
+                break;   
+        }    
+    }
     public static void main(String[] args) {
         new DrawingShapes();
     }
