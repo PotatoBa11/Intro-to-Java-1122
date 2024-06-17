@@ -37,6 +37,21 @@ public class DrawingShapes extends Frame {
             }
         });
 
+        addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_L:
+                        shape = Shapes.LINE;                        
+                        break;
+                    case KeyEvent.VK_S:
+                        shape = Shapes.SQUARE;
+                        break;
+                    case KeyEvent.VK_O:
+                        shape = Shapes.OCTAGON;
+                        break;
+                }
+            }
+        });
 
         // enable focus traversal keys
         setFocusTraversalKeysEnabled(true);
