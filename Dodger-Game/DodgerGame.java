@@ -58,6 +58,35 @@ public class DodgerGame extends JFrame implements MouseMotionListener {
         timer.start();
         setVisible(true);
     }
+    private void update() {
+        if(hp <= 0) {
+            JOptionPane.showMessageDialog(this, "Game Over!");
+            System.exit(0);
+        }
+
+        if(random.nextInt(RAND_BOUND) == 0) {
+            squares.add(
+                new Rectangle(
+                    random.nextInt(BACK_WIDTH-SQ_SIZE), 0,
+                    SQ_SIZE, SQ_SIZE)
+            );
+        }
+        
+        for(Rectangle sq: squares) {
+            sq.y += SQ_SPEED;
+            if(sq.intersects(circle)) {
+                hp--;
+                squares.remove(sq);
+                break;
+            }
+            if(sq.y > BACK_HEIGHT) {
+                squares.remove(sq);
+                break;
+            }
+        }
+        hp_lbl.setText("HP: " + hp);
+    }
+
 
     public static void main(String[] args) {
         new DodgerGame();
