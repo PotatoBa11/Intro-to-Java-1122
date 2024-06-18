@@ -47,4 +47,35 @@ public class DrawingStars extends JFrame {
         new DrawingStars();
     }
 
+    private class DrawingPanel extends JPanel {
+        private int startX, startY, endX, endY;
+
+        public DrawingPanel() {
+            setBackground(Color.WHITE);
+
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    startX = e.getX();
+                    startY = e.getY();
+                    endX = e.getX();
+                    endY = e.getY();
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    repaint();
+                }
+            });
+
+            addMouseMotionListener(new MouseAdapter() {
+                @Override
+                public void mouseDragged(MouseEvent e) {
+                    endX = e.getX();
+                    endY = e.getY();
+                    repaint();
+                }
+            });
+        }
+    }
 }
