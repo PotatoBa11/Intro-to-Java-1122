@@ -77,5 +77,52 @@ public class DrawingStars extends JFrame {
                 }
             });
         }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(Color.BLACK);
+
+            int centX = (startX + endX) / 2;
+            int centY = (startY + endY) / 2;
+            int radius = Math.min(Math.abs(endX - startX), Math.abs(endY - startY)) / 2;
+
+            int[] xPoints, yPoints;
+
+            switch (shape) {
+                case PENTAGON:
+                    xPoints = new int[10];
+                    yPoints = new int[10];
+
+                    for (int i = 0; i < 10; ++i) {
+                        double angle = 2 * Math.PI / 10 * i;
+                        if (i % 2 == 0) {
+                            xPoints[i] = (int) (centX + radius * Math.cos(angle));
+                            yPoints[i] = (int) (centY + radius * Math.sin(angle));
+                        } else {
+                            xPoints[i] = (int) (centX + radius / 2 * Math.cos(angle));
+                            yPoints[i] = (int) (centY + radius / 2 * Math.sin(angle));
+                        }
+                    }
+                    g2d.drawPolygon(xPoints, yPoints, 10);
+                    break;
+
+                case PENTAGRAM:
+                    xPoints = new int[5];
+                    yPoints = new int[5];
+
+                    for (int i = 0; i < 5; ++i) {
+                        double angle = 2 * Math.PI / 5 * i;
+                        xPoints[i] = (int) (centX + radius * Math.cos(angle));
+                        yPoints[i] = (int) (centY + radius * Math.sin(angle));
+                    }
+                    for (int i = 0; i < 5; ++i) {
+                        int nextPoint = (i + 2) % 5;
+                        g2d.drawLine(xPoints[i], yPoints[i], xPoints[nextPoint], yPoints[nextPoint]);
+                    }
+                    break;
+            }
+        }
     }
 }
