@@ -1,5 +1,6 @@
 ## Thanks to TA
 
+### Description
 This program creates a graphical user interface (GUI) window with three color options (Red, Blue, Green) and a label that initially displays the text "助教辛苦了~" (which means "Hard work, TA~" in English).
 
 ### How to Run
