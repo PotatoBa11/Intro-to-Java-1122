@@ -63,6 +63,19 @@ public class TicTacToeGame extends JFrame{
         resetBoard();
         setVisible(true);
     }
+    private void resetBoard() {
+        curPlayer = 'O';
+        statusLbl.setText("Player " + curPlayer + "'s turn");
+
+        for(int row=0; row < 4; ++row) {
+            for(int col=0; col < 4; ++col) {
+                board[row][col] = EMPTY_CHAR;
+                btns[row][col].setText(
+                    String.valueOf(board[row][col]));
+                btns[row][col].setEnabled(true);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         new TicTacToeGame();
