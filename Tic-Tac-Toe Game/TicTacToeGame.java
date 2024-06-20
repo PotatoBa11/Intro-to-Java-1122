@@ -77,6 +77,27 @@ public class TicTacToeGame extends JFrame{
         }
     }
 
+    private void btnClicked(int row, int col) {
+        if(board[row][col] == EMPTY_CHAR) {
+            board[row][col] = curPlayer;
+            btns[row][col].setText(String.valueOf(curPlayer));
+            
+            if(checkWin(curPlayer)) {
+                JOptionPane.showMessageDialog(this, "Player " + curPlayer + " wins!");
+                resetBoard();
+                return;
+            } else if(checkDraw()) {
+                JOptionPane.showMessageDialog(this, "It's a draw!");
+                resetBoard();
+                return;
+            }
+
+            curPlayer = (curPlayer == X) ? O : X;
+            statusLbl.setText("Player " + curPlayer + "'s turn");
+        }
+    }
+
+
     public static void main(String[] args) {
         new TicTacToeGame();
     }
